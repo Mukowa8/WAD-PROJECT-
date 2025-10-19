@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = trim($_POST['password'] ?? '');
 
   if (empty($username) || empty($email) || empty($password)) {
-    $message = "⚠️ All fields are required.";
+    $message = "All fields are required.";
   } else {
     $check = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $check->bind_param("s", $email);
@@ -18,16 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $check->get_result();
 
     if ($result->num_rows > 0) {
-      $message = "❌ Email already registered!";
+      $message = "Email already registered!";
     } else {
       $hashed = password_hash($password, PASSWORD_DEFAULT);
       $insert = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
       $insert->bind_param("sss", $username, $email, $hashed);
 
       if ($insert->execute()) {
-        $message = "✅ Registration successful! You can now log in.";
+        $message = " Registration successful! You can now log in.";
       } else {
-        $message = "❌ Error during registration.";
+        $message = "Error during registration.";
       }
     }
   }
