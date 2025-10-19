@@ -11,9 +11,9 @@ function initCourseList(){
   const list = document.getElementById('courseList');
   const saved = JSON.parse(localStorage.getItem('uniflow_courses')||'null');
   const defaultCourses = saved || [
-    {id:'MATH101', name:'Calculus I', duration:1},
-    {id:'CS102', name:'Intro to Programming', duration:2},
-    {id:'ENG200', name:'Academic Writing', duration:1},
+    {id:'MCI512S', name:'Mathematics For computing', duration:1},
+    {id:'PRG512s', name:'Programming', duration:2},
+    {id:'DPG512s', name:'Database Programming', duration:1},
   ];
   localStorage.setItem('uniflow_courses', JSON.stringify(defaultCourses));
   list.innerHTML='';
